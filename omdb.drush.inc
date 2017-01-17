@@ -30,8 +30,6 @@ function omdb_drush_command() {
  *   drush_{module_name}_{item_id_for_command}()
  */
 function drush_omdb_file_to_node() {
-  // (?<=")(.*)(?=")" - title
-  // (?<=\()(.*)(?=\)) - data
   $option = drush_get_option('opt_name');
   if (!empty($option)) {
     $handle = fopen($option, "r") or die("Couldn't get handle");
@@ -47,23 +45,30 @@ function drush_omdb_file_to_node() {
         if (!empty($math)) {
           $title = $math[1];
         }
-//        print $buffer;
+        preg_match('/\(([^)]+)\)/', $buffer, $math);
+        if (!empty($math)) {
+          $year = $math[1];
+        }
+
         print("$count/$total \r");
+
         // Process buffer here..
+//        if (!empty($title) && !empty($year)) {
+          $node = Node::create([
+            'type' => 'node_from_file',
+            'title' => $title,
+            'field_year'  => [
+              'value' => $year
+            ],
+          ]);
+
+          $node->save();
+//        }
       }
       fclose($handle);
     }
   }
-  $data = file_get_contents('https://www.drupal.org/files/druplicon.small_.png');
-  $file = file_save_data($data, 'public://druplicon.png', FILE_EXISTS_REPLACE);
 
-// Create node object with attached file.
-  $node = Node::create([
-    'type'        => 'node_from_file',
-    'title'       => "",
-    'year'        => "",
-  ]);
-  $node->save();
 
 //  echo '<pre>' . print_r($option, TRUE) . '</pre>';
 //  die();

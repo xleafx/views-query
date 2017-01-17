@@ -1,0 +1,13 @@
+omdb.settings:
+  type: config_object
+  label: 'OMDb settings'
+  mapping:
+    api:
+      type: string
+      label: 'Link to api search movies:'
+    poster_source:
+      type: string
+      label: 'Link to poster image source'
+    api_url:
+      typa: string
+      label: 'Other part ot url'

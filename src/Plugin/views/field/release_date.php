@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of Drupal\omdb\Plugin\views\field\title
+ * Definition of Drupal\omdb\Plugin\views\field\release_date
  */
 namespace Drupal\omdb\Plugin\views\field;
 
@@ -12,11 +12,11 @@ use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
 
 /**
- * Class Title
+ * Class ReleaseDate
  *
- * @ViewsField("api_title")
+ * @ViewsField("api_release_date")
  */
-class Title extends FieldPluginBase {
+class ReleaseDate extends FieldPluginBase {
   /**
    * {@inheritdoc}
    */
@@ -26,7 +26,7 @@ class Title extends FieldPluginBase {
 
   public function render(ResultRow $values) {
     return array(
-      '#markup' => $values->title // $value['title'],
+      '#markup' => $values->release_date
     );
   }
 }

@@ -25,12 +25,6 @@ class Id extends FieldPluginBase {
   }
 
   public function render(ResultRow $values) {
-//    echo '<pre>' . print_r($values, TRUE) . '</pre>';
-//    die();
-//        $value = $this->getValue($values);
-
-//    dsm($values);
-    $output = t("Hello World!");
     return array(
       '#markup' => $values->id// $value['title'],
     );

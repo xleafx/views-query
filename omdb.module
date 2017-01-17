@@ -8,46 +8,84 @@ function omdb_views_data() {
     $data = [];
     $data['omdb_profile']['table']['group'] = t('omdb profile');
     $data['omdb_profile']['table']['base'] = [
-        'title' => t('Omdb profile'),
-        'help' => t('Omdb profile data provided by the Fitbit API\'s User Profile endpoint.'),
-        'query_id' => 'omdb',
+        'title'     => t('Omdb profile'),
+        'help'      => t('Omdb profile data provided by the Fitbit API\'s User Profile endpoint.'),
+        'query_id'  => 'omdb',
     ];
 
     $data['omdb_profile']['title'] = [
-      'title' => t('Title'),
-      'help' => t('OMDb users\' display name.'),
-      'field' => [
-        'id' => 'omdb_title',
+      'title'  => t('Title'),
+      'help'   => t('Title:'),
+      'field'  => [
+        'id'    => 'api_title',
       ],
+      'argument' => [
+        'id'      => 'api_title_argument'
+      ]
     ];
 
     $data['omdb_profile']['id'] = [
-      'title' => t('Id'),
-      'help' => t('Same id'),
-      'field' => [
-        'id' => 'api_id',
+      'title'  => t('Id'),
+      'help'   => t('Some id'),
+      'field'  => [
+        'id'    => 'api_id',
       ],
       'argument' => [
-        'id' => 'api_id_argument'
+        'id'      => 'api_id_argument'
       ]
     ];
 
     $data['omdb_profile']['name'] = [
-      'title' => t('Name'),
-      'help' => t('Name:'),
-      'field' => [
-        'id' => 'api_name',
+      'title'   => t('Name'),
+      'help'    => t('Name:'),
+      'field'   => [
+        'id'      => 'api_name',
       ],
       'argument' => [
-        'id' => 'api_name_argument'
+        'id'      => 'api_name_argument'
+      ]
+    ];
+
+    $data['omdb_profile']['poster_path'] = [
+      'type'    => 'image',
+      'title'   => t('Image'),
+      'help'    => t('Image poster'),
+      'field'   => [
+        'id'      => 'api_image',
+      ],
+      'argument' => [
+        'id'      => 'api_image_argument'
+      ]
+    ];
+
+    $data['omdb_profile']['nodes_titles'] = [
+      'title'     => t('Node titles'),
+      'filter'    => [
+        'title'     => t('Node titles'),
+        'help'      => t('Specify a list of titles a node can have.'),
+        'field'     => 'title',
+        'id'        => 'api_node_titles'
+      ],
+    ];
+
+    $data['omdb_profile']['release_date'] = [
+      'title'   => t('Release date'),
+      'field'   => [
+        'id'      => 'api_release_date'
+      ],
+      'filter'  => [
+        'title'   => t('Release date'),
+        'help'    => t('Specify a list of release date a node can have.'),
+        'field'   => 'release_date',
+        'id'      => 'api_release_date_filter',
       ]
     ];
 
     $data['omdb_profile']['page'] = [
-      'title' => t('Page'),
-      'help' => t('Page'),
-      'field' => [
-        'id' => 'api_page',
+      'title'   => t('Page'),
+      'help'    => t('Page'),
+      'field'   => [
+        'id'      => 'api_page',
       ],
     ];
   return $data;

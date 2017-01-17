@@ -12,7 +12,7 @@ use Drupal\views\Plugin\views\argument\ArgumentPluginBase;
  *
  * @ingroup argument
  *
- * @ViewsArgument("api_name_argument")
+ * @ViewsArgument("api_title_argument")
  */
 class NumericArgument extends ArgumentPluginBase {
 
