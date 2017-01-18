@@ -78,7 +78,10 @@ function omdb_views_data() {
         'help'    => t('Specify a list of release date a node can have.'),
         'field'   => 'release_date',
         'id'      => 'api_release_date_filter',
-      ]
+      ],
+      'argument' => [
+        'id'      => 'api_release_date_arg'
+      ],
     ];
 
     $data['omdb_profile']['page'] = [

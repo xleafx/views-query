@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\omdb\Plugin\views\query {
+namespace Drupal\omdb\Plugin\views\query;
 
   use Drupal\Core\Render\Element\Value;
   use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -48,7 +48,6 @@ namespace Drupal\omdb\Plugin\views\query {
 
         // Let the pager modify the query to add limits.
   //      $view->pager->query();
-
         $view->build_info['query'] = $this->query();
         $view->build_info['count_query'] = $this->query(TRUE);
       }
@@ -58,13 +57,19 @@ namespace Drupal\omdb\Plugin\views\query {
 //      dsm(array_keys((array) $view));
 //      dsm($view);
       $query = $view->build_info['query'];
+
+//      $api = \Drupal::config('omdb.settings')->get('api');
+//      $api_url = \Drupal::config('omdb.settings')->get('api_url');
+//      $poster_source = \Drupal::config('omdb.settings')->get('poster_source');
+
       $api = 'https://api.themoviedb.org/3/search/';
+      $api_url = 'movie?api_key=1ea13391aba7f6ee274bfb05e3bc2229&language=en-US&query=';
       $poster_source = 'https://image.tmdb.org/t/p/w500';
+
       $year =
       $row = array();
       $view->pager->preExecute($query);
-      $api_url = \Drupal::config('omdb.settings')->get('api_url');
-      $request = json_decode(file_get_contents($api . 'movie?api_key=1ea13391aba7f6ee274bfb05e3bc2229&language=en-US&query=' . current($view->args) . '&year='. $year .'&page=1'));
+      $request = json_decode(file_get_contents($api . $api_url . current($view->args) . '&year='. $year .'&page=1'));
 //      $poster_request =
 
       $index = 0;
@@ -88,4 +93,3 @@ namespace Drupal\omdb\Plugin\views\query {
     private function setDistinct($TRUE) {
     }
   }
-}

@@ -9,5 +9,5 @@ omdb.settings:
       type: string
       label: 'Link to poster image source'
     api_url:
-      typa: string
+      type: string
       label: 'Other part ot url'
