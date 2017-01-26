@@ -1,0 +1,7 @@
+omdb.batch_import:
+  path: '/batch-import'
+  defaults:
+    _form: 'Drupal\omdb\Form\ImportNodeForm'
+    _title: 'Batch'
+  requirements:
+    _permission: 'access content'
