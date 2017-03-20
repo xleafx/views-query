@@ -54,8 +54,6 @@ namespace Drupal\omdb\Plugin\views\query;
 
 
     public function execute(ViewExecutable $view)  {
-//      dsm(array_keys((array) $view));
-//      dsm($view);
       $query = $view->build_info['query'];
 
 //      $api = \Drupal::config('omdb.settings')->get('api');

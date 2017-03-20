@@ -5,7 +5,6 @@ namespace Drupal\omdb\Plugin\views\argument;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\argument\ArgumentPluginBase;
 
-
 /**
  * Basic argument handler for arguments that are numeric. Incorporates
  * break_phrase.

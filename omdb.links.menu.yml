@@ -1,0 +1,6 @@
+omdb.settings:
+  title: Import Monitoring
+  route_name: omdb.settings
+  parent: system.admin
+  description: 'View reports, updates, and errors.'
+  weight: 5

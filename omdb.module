@@ -1,5 +1,10 @@
 <?php
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Queue\QueueFactory;
+use Drupal\Core\Queue\QueueInterface;
+
 /**
 * @file
 * A description of what your module does.
@@ -14,6 +19,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['title'] = [
+      'type' => 'textfield',
       'title'  => t('Title'),
       'help'   => t('Title:'),
       'field'  => [
@@ -25,6 +31,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['id'] = [
+      'type' => 'string',
       'title'  => t('Id'),
       'help'   => t('Some id'),
       'field'  => [
@@ -36,6 +43,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['name'] = [
+      'type' => 'textfield',
       'title'   => t('Name'),
       'help'    => t('Name:'),
       'field'   => [
@@ -59,6 +67,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['nodes_titles'] = [
+      'type' => 'textfield',
       'title'     => t('Node titles'),
       'filter'    => [
         'title'     => t('Node titles'),
@@ -69,6 +78,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['release_date'] = [
+      'type' => 'string',
       'title'   => t('Release date'),
       'field'   => [
         'id'      => 'api_release_date'
@@ -85,6 +95,7 @@ function omdb_views_data() {
     ];
 
     $data['omdb_profile']['page'] = [
+      'type' => 'string',
       'title'   => t('Page'),
       'help'    => t('Page'),
       'field'   => [
@@ -94,9 +105,24 @@ function omdb_views_data() {
   return $data;
 }
 
-///**
-// * Implements hook_views_data_alter().
-// */
-//function omdb_views_data_alter(array &$data) {
-//  dsm($data);
-//}
+function omdb_cron() {
+  /** @var QueueFactory $queue_factory */
+  $queue_factory = \Drupal::service('queue');
+  $queue = $queue_factory->get('omdb_import');
+  $item = new \stdClass();
+  $item->line = \Drupal::config('omdb.settings')->get('line');
+  $queue->createItem($item);
+  \Drupal::configFactory()->getEditable('omdb.settings')->set('line', $item->line+1)->save();
+}
+
+function omdb_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  $entity_type_id = $entity->getEntityTypeId();
+  if ($entity_type_id == 'node') {
+//    dsm($display);
+
+  }
+}
+
+function omdb_preprocess_node(&$variables) {
+  dsm('prep');
+}

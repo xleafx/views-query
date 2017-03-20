@@ -49,7 +49,7 @@ class ImportNodeForm extends FormBase {
        $count = explode(" ", exec('wc -l ' . $file_path));
        $count = $count[0];
         $batch = array(
-            'title' => t('Importing Node...'),
+            'title' =>  t('Importing Node...'),
             'operations' => array(
                 array(
                     '\Drupal\omdb\ImportNode::progressFile',

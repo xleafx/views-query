@@ -11,3 +11,6 @@ omdb.settings:
     api_url:
       type: string
       label: 'Other part ot url'
+    line:
+      type: integer
+      label: 'Set lines'

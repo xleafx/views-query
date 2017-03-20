@@ -6,3 +6,5 @@ rebuild_theme: FALSE
 api: 'https://api.themoviedb.org/3/search/'
 poster_source: 'https://image.tmdb.org/t/p/w500'
 api_url: 'movie?api_key=1ea13391aba7f6ee274bfb05e3bc2229&language=en-US&query='
+cron_path: '/home/edge/Documents/test.list'
+#line: 1

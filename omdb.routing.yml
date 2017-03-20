@@ -5,3 +5,11 @@ omdb.batch_import:
     _title: 'Batch'
   requirements:
     _permission: 'access content'
+
+omdb.settings:
+  path: '/admin/omdb'
+  defaults:
+    _title: 'Debug Page'
+    _form: '\Drupal\omdb\Form\OmdbMonitoring'
+  requirements:
+    _permission: 'access content'
